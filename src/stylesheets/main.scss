@@ -1,98 +1,128 @@
-// Your styles go here
+
+
+//variables
+$primary-color: #0d6efd;
+$secondary-color: #333;
+$font-size: 11pt;
+$line-height: 1.75em;
+$spacing: 1em;
+$border-radius: 5px;
+
+
+//Nesting css items
+
 body {
+
   background: #202020 url('/images/footer-bg.jpg') repeat;
   min-width: 1200px;
   margin: 0;
   padding: 0;
+  
 }
 
-body,
-input,
-textarea,
-select {
+//using mixixngs without argument
+
+@mixin font-style {
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 300;
   font-size: 11pt;
   line-height: 1.75em;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-weight: 300;
-}
-
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a {
+@mixin link-styles {
   color: inherit;
   text-decoration: none;
 }
 
-strong,
-b {
-  font-weight: bold;
-  color: #000000;
+body,
+input,
+textarea,
+select {
+  @include font-style;
 }
 
-em,
-i {
-  font-style: italic;
-}
 
-a {
-  color: #0d6efd;
-}
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
+    @include link-styles;
+  }
 
-sub {
-  position: relative;
-  top: 0.5em;
-  font-size: 0.8em;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
 
-sup {
-  position: relative;
-  top: -0.5em;
-  font-size: 0.8em;
-}
+  strong,
+  b {
+    font-weight: bold;
+    color: #000000;
+  }
 
-hr {
-  border: 0;
-  border-top: solid 1px #ddd;
-}
+  em,
+  i {
+    font-style: italic;
+  }
 
-p,
-ul,
-ol,
-dl,
-table {
-  margin-bottom: 1em;
-}
+  a {
+    color: #0d6efd;
+  }
+
+  sub {
+    position: relative;
+    top: 0.5em;
+    font-size: 0.8em;
+  }
+
+  sup {
+    position: relative;
+    top: -0.5em;
+    font-size: 0.8em;
+  }
+
+  hr {
+    border: 0;
+    border-top: solid 1px #ddd;
+  }
+
+  p,
+  ul,
+  ol,
+  dl,
+  table {
+    margin-bottom: 1em;
+  }
+
+
+//header
 
 header {
   margin-bottom: 2em;
   line-height: 1.7em;
 }
 
-header h2 {
-  font-size: 2.5em;
-}
+  header h2 {
+    font-size: 2.5em;
+  }
 
-header .byline {
-  display: block;
-  margin: 0.5em 0 0 0;
-  padding: 0 0 0.5em 0;
-  text-transform: uppercase;
-  font-size: 1.4em;
-}
+  .byline {
+    display: block;
+    margin: 0.5em 0 0 0;
+    padding: 0 0 0.5em 0;
+    text-transform: uppercase;
+    font-size: 1.4em;
+  }
+
+
 
 section,
 article {
@@ -158,67 +188,17 @@ footer {
   height: 0;
 }
 
-.column-1,
-.column-2,
-.column-3,
-.column-4,
-.column-5,
-.column-6,
-.column-7.column-8,
-.column-9,
-.column-10,
-.column-11,
-.column-12 {
-  width: 100%;
+//wokring with columns
+
+@mixin make-column($width) {
+  width: $width;
 }
 
-@media all and (min-width: 576px) {
-  .column-1 {
-    width: 8.33333%;
-  }
+$columns: 12;
 
-  .column-2 {
-    width: 16.66667%;
-  }
-
-  .column-3 {
-    width: 25%;
-  }
-
-  .column-4 {
-    width: 33.33333%;
-  }
-
-  .column-5 {
-    width: 41.66667%;
-  }
-
-  .column-6 {
-    width: 50%;
-  }
-
-  .column-7 {
-    width: 58.33333%;
-  }
-
-  .column-8 {
-    width: 66.66667%;
-  }
-
-  .column-9 {
-    width: 75%;
-  }
-
-  .column-10 {
-    width: 83.33333%;
-  }
-
-  .column-11 {
-    width: 91.66667%;
-  }
-
-  .column-12 {
-    width: 100%;
+@for $i from 1 through $columns {
+  .column-#{$i} {
+    width: (100% / $columns) * $i;
   }
 }
 
@@ -379,43 +359,6 @@ ul.style5 li {
   font-weight: 600;
 }
 
-.nav {
-  position: absolute;
-  right: 0em;
-  top: 2.2em;
-}
-
-.nav ul {
-  list-style-type: none;
-}
-
-.nav ul li {
-  float: left;
-}
-
-.nav ul li:last-child {
-  padding-right: 0;
-}
-
-.nav ul li a,
-.nav ul li span {
-  display: block;
-  margin-left: 0.7em;
-  padding: 0.80em 1.2em;
-  letter-spacing: 0.06em;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 1.1em;
-  outline: 0;
-  color: #333;
-}
-
-.nav li.active a {
-  background: #0d6efd;
-  border-radius: 5px;
-  color: #FFF;
-}
-
 .banner {
   position: relative;
   padding: 12em 0em;
@@ -506,3 +449,6 @@ ul.style5 li {
 .balloon strong {
   color: #333 !important;
 }
+
+//importing file
+@import './nav.scss';
