@@ -26,11 +26,11 @@
     text-transform: uppercase;
     font-size: 1.1em;
     outline: 0;
-    color: #333;
+    color: $secondary-color;
   }
   
   .nav li.active a {
-    background: #0d6efd;
+    background: $primary-color;
     border-radius: 5px;
     color: #FFF;
   }
